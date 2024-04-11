@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .task-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .task-item {
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .task-item input[type="checkbox"] {
+            margin-right: 10px;
+        }
+
+        .update-btn {
+            background-color: #f4b2de;
+            color: white;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .update-input {
+            width: 70%;
+            padding: 8px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Update Task</h1>
+
+    <ul class="task-list">
+        <li class="task-item">
+            <input type="checkbox" id="task1" />
+            <label for="task1">Task 1</label>
+            <button class="update-btn" onclick="updateTask('task1')">Update</button>
+        </li>
+        <li class="task-item">
+            <input type="checkbox" id="task2" />
+            <label for="task2">Task 2</label>
+            <button class="update-btn" onclick="updateTask('task2')">Update</button>
+        </li>
+    </ul>
+
+    <script>
+        function updateTask(taskId) {
+            var taskLabel = document.querySelector('label[for=' + taskId + ']');
+            var newDescription = prompt('Enter updated description for ' + taskLabel.innerText);
+
+            if (newDescription !== null) {
+                taskLabel.innerText = newDescription;
+            }
+        }
+    </script>
+
+</body>
+</html>

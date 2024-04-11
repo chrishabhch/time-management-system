@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create task</title>
+    <style>
+      body {
+    font-family: Arial, sans-serif;
+    background-color: #efd2e2;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.todo-container {
+    width: 400px;
+    padding: 20px;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+    background-color: #fef8fc;
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+input, select {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    box-sizing: border-box;
+    margin-top: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 5px;
+}
+#outputContainer {
+    margin-top: 20px;
+    margin-left: 30px;
+    text-align: center;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+}
+
+    </style>
+</head>
+<body>
+    <div class="todo-container">
+        <h2>Create Task</h2>
+
+        <label for="user">Select User:</label>
+        <select id="user">
+            <option value="user2">Select..</option>
+            <option value="user1">Rishabh</option>
+            <option value="user2">Kishan</option>
+            <option value="user2">Pratistha</option>
+            <option value="user2">Harsh Garg</option>
+            <option value="user2">Garima</option>
+            <option value="user2">Kirti</option>
+        </select>
+
+        <label for="description">Description:</label>
+        <input type="text" id="description" placeholder="Enter task description...">
+
+        <label for="startDate">Start Date:</label>
+        <input type="date" id="startDate">
+
+        <label for="endDate">End Date:</label>
+        <input type="date" id="endDate">
+
+        <label for="taskType">Task Type:</label>
+        <input type="text" id="taskType" placeholder="Enter task type...">
+
+        <button onclick="createTask()">Create To-Do</button>
+
+        <ul id="taskList"></ul>
+    </div>
+
+    <!-- New div outside the .todo-container for displaying output -->
+    <div id="outputContainer" style="margin-top: 20px; text-align: center;"></div>
+
+    <script>
+        function createTask() {
+            const user = document.getElementById("user").value;
+            const description = document.getElementById("description").value;
+            const startDate = document.getElementById("startDate").value;
+            const endDate = document.getElementById("endDate").value;
+            const taskType = document.getElementById("taskType").value;
+
+            const taskList = document.getElementById("taskList");
+
+            if (description.trim() !== "") {
+                const newTask = document.createElement("li");
+                newTask.innerHTML = `
+                    <button onclick="removeTask(this)">Remove</button>
+                `;
+                taskList.appendChild(newTask);
+
+                // Display output in the new div
+                const outputContainer = document.getElementById("outputContainer");
+                outputContainer.innerHTML = `
+                    <h3>Task Created:</h3>
+                    <p>User: ${user}</p>
+                    <p>Description: ${description}</p>
+                    <p>Start Date: ${startDate}</p>
+                    <p>End Date: ${endDate}</p>
+                    <p>Task Type: ${taskType}</p>
+                `;
+
+                // Clear input fields after creating a task
+                document.getElementById("user").value = "user1";
+                document.getElementById("description").value = "";
+                document.getElementById("startDate").value = "";
+                document.getElementById("endDate").value = "";
+                document.getElementById("taskType").value = "";
+            }
+        }
+
+        function removeTask(button) {
+            const taskList = document.getElementById("taskList");
+            const taskToRemove = button.parentNode;
+            taskList.removeChild(taskToRemove);
+        }
+    </script>
+</body>
+</html>

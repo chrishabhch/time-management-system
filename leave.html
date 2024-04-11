@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Management - Apply Leave</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .leave-form {
+            max-width: 400px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Task Management - Apply Leave</h1>
+
+    <div class="leave-form">
+        <form id="applyLeaveForm" action="#" method="post">
+            <div class="form-group">
+                <label for="leaveType">Leave Type:</label>
+                <select id="leaveType" name="leaveType" required>
+                    <option value="vacation">Vacation</option>
+                    <option value="sick">Sick Leave</option>
+                    <option value="personal">Personal Leave</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="startDate">Start Date:</label>
+                <input type="date" id="startDate" name="startDate" required>
+            </div>
+            <div class="form-group">
+                <label for="endDate">End Date:</label>
+                <input type="date" id="endDate" name="endDate" required>
+            </div>
+            <div class="form-group">
+                <label for="reason">Reason for Leave:</label>
+                <textarea id="reason" name="reason" rows="4" required></textarea>
+            </div>
+            <button type="submit">Submit Leave Application</button>
+        </form>
+    </div>
+
+</body>
+</html>
